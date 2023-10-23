@@ -1,8 +1,14 @@
+import java.util.ArrayList;
+import java.util.Collection;
+
 public class City {
     String name;
-    Connection[] neighbours;
-
-    public void addNeighbour(City next, int distance) {
-
+    ArrayList<Connection> neighbours;
+    int i = 0;
+    public City(String name) {
+        this.name = name;
+    }
+    public void addNeighbour(City next, Integer distance) {
+        this.neighbours.add(new Connection(next, distance));
     }
 }

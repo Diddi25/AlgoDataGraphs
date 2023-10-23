@@ -9,7 +9,12 @@ public class Map {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
-
+                String[] row = line.split(",");
+                City first = lookup(row[0]);
+                City second = lookup(row[1]);
+                Integer distanceInMinutes = Integer.valueOf(row[2]);
+                first.addNeighbour(second, distanceInMinutes);
+                second.addNeighbour(first, distanceInMinutes);
             }
         } catch (Exception e) {
             System.out.println(" file " + file + " not found or corrupt");
@@ -23,6 +28,10 @@ public class Map {
         return index % modulo;
     }
     public City lookup(String cityName) {
-        return null; //used after adding cities and traversing
+        Integer index = hashFunction(cityName);
+        if (cities[index] == null) {
+            cities[index] = new City(cityName);
+        } else if ()
+        return cities[index]; //used for adding cities and traversing
     }
 }
