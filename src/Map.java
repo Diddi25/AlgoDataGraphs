@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class Map {
-    private City[] cities;
+    private Bucket[] cities;
     private final int modulo = 541;
     public Map(String file) {
-        cities = new City[modulo];
+        cities = new Bucket[modulo];
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -30,8 +30,11 @@ public class Map {
     public City lookup(String cityName) {
         Integer index = hashFunction(cityName);
         if (cities[index] == null) {
-            cities[index] = new City(cityName);
-        } else if ()
-        return cities[index]; //used for adding cities and traversing
+            cities[index] = new Bucket(new City(cityName), null);
+        } else if (!cities[index].cityReference.name.equals(cityName)) {
+            cities[index].next = new Bucket(new City(cityName), null);
+            cities[index] = cities[index].next;
+        }
+        return cities[index].cityReference; //used for adding cities and traversing
     }
 }

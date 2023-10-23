@@ -23,12 +23,14 @@ public class Naive {
             return 0;
         }
         Integer shortestPath = null;
+        /*
         for (int i = 0; i < from.neighbours.length; i++) {
             if (from.neighbours[i] != null) {
                 Connection connection = from.neighbours[i];
 
             }
         }
+         */
         return shortestPath;
     }
 }
