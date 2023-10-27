@@ -11,7 +11,7 @@ public class Naive {
 
         long t0 = System.nanoTime();
         Integer dist = shortest(map.lookup(from), map.lookup(to), max);
-        long time = (System.nanoTime() - t0)/1_000_000;
+        long time = (System.nanoTime() - t0);
 
         System.out.println("shortest: " + dist + " min (" + time + " ms)");
     }

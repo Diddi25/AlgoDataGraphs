@@ -2,12 +2,11 @@ import java.util.ArrayList;
 
 public class City {
     String name;
-    ArrayList<Connection> neighbours;
-    int i = 0;
+    ArrayList<Connection> connections;
     public City(String name) {
         this.name = name;
     }
-    public void addNeighbour(City next, Integer distance) {
-        this.neighbours.add(new Connection(next, distance));
+    public void addConnection(City next, Integer distance) {
+        this.connections.add(new Connection(next, distance));
     }
 }

@@ -13,8 +13,8 @@ public class Map {
                 City fromCity = lookup(row[0]);
                 City toCity = lookup(row[1]);
                 Integer distanceInMinutes = Integer.valueOf(row[2]);
-                fromCity.addNeighbour(toCity, distanceInMinutes);
-                toCity.addNeighbour(fromCity, distanceInMinutes);
+                fromCity.addConnection(toCity, distanceInMinutes);
+                toCity.addConnection(fromCity, distanceInMinutes);
             }
         } catch (Exception e) {
             System.out.println(" file " + file + " not found or corrupt");
