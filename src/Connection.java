@@ -1,8 +1,8 @@
 public class Connection {
-    City cityToConnect;
+    City city;
     Integer distanceInMinutes;
-    public Connection(City cityToConnect, Integer distanceInMinutes) {
-        this.cityToConnect = cityToConnect;
+    public Connection(City city, Integer distanceInMinutes) {
+        this.city = city;
         this.distanceInMinutes = distanceInMinutes;
     }
 }

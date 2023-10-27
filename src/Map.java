@@ -4,6 +4,7 @@ import java.io.FileReader;
 public class Map {
     private Bucket[] map;
     private final int modulo = 541;
+    public Integer maxDistance = 0;
     public Map(String file) {
         map = new Bucket[modulo];
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -13,6 +14,9 @@ public class Map {
                 City fromCity = lookup(row[0]);
                 City toCity = lookup(row[1]);
                 Integer distanceInMinutes = Integer.valueOf(row[2]);
+                if (distanceInMinutes > maxDistance) {
+                    maxDistance = distanceInMinutes;
+                }
                 fromCity.addConnection(toCity, distanceInMinutes);
                 toCity.addConnection(fromCity, distanceInMinutes);
             }

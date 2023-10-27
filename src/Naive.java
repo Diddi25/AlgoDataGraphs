@@ -4,33 +4,37 @@ public class Naive {
 
         Map map = new Map("trains.csv");
 
-        String from = args[0];
-        String to = args[1];
+        String fromCity = args[0];
+        String toCity = args[1];
 
         Integer max = Integer.valueOf(args[2]);
 
         long t0 = System.nanoTime();
-        Integer dist = shortest(map.lookup(from), map.lookup(to), max);
+        Integer distanceInMinutes = shortest(map.lookup(fromCity), map.lookup(toCity), max, map.maxDistance);
         long time = (System.nanoTime() - t0);
 
-        System.out.println("shortest: " + dist + " min (" + time + " ms)");
+        System.out.println("shortest: " + distanceInMinutes + " min (" + time + " ms)");
     }
-    private static Integer shortest(City from, City to, Integer max) {
+    private static Integer shortest(City fromCity, City toCity, Integer max, Integer currentDistance) {
         if (max < 0) {
             return null;
         }
-        if (from == to) {
+        if (fromCity == toCity) {
             return 0;
         }
-        Integer shortestPath = null;
-        /*
-        for (int i = 0; i < from.neighbours.length; i++) {
-            if (from.neighbours[i] != null) {
-                Connection connection = from.neighbours[i];
-
+        Integer shortestPath = currentDistance;
+        while (!fromCity.equals(toCity)){
+            for (Connection candidate: fromCity.connections) {
+                if (candidate.distanceInMinutes < shortestPath) {
+                    shortestPath += candidate.distanceInMinutes;
+                    if (max < 0) {
+                        return null;
+                    }
+                    max -= shortestPath;
+                    shortest(candidate.city, toCity, max, shortestPath);
+                }
             }
         }
-         */
         return shortestPath;
     }
 }
