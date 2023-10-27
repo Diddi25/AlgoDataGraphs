@@ -1,8 +1,8 @@
 public class Bucket {
-    City cityReference;
+    City cityInBucket;
     Bucket next;
-    public Bucket(City thisCity, Bucket nextReference) {
-        this.cityReference = thisCity;
-        this.next = nextReference;
+    public Bucket(City thisCity, Bucket nextBucket) {
+        this.cityInBucket = thisCity;
+        this.next = nextBucket;
     }
 }
