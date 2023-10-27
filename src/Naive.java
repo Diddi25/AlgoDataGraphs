@@ -31,7 +31,7 @@ public class Naive {
                         return null;
                     }
                     max -= shortestPath;
-                    shortest(candidate.city, toCity, max, shortestPath);
+                    fromCity = candidate.city;
                 }
             }
         }
