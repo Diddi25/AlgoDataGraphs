@@ -22,10 +22,13 @@ public class Naive {
         if (fromCity == toCity) {
             return 0;
         }
-        Integer shortestPath = currentDistance;
+        Integer shortestPath = null;
+        Integer smallestDistanceCandidate;
         while (!fromCity.equals(toCity)){
+            smallestDistanceCandidate = currentDistance;
             for (Connection candidate: fromCity.connections) {
-                if (candidate.distanceInMinutes < shortestPath) {
+                if (candidate.distanceInMinutes < smallestDistanceCandidate) {
+                    smallestDistanceCandidate = candidate.distanceInMinutes;
                     shortestPath += candidate.distanceInMinutes;
                     if (max < 0) {
                         return null;

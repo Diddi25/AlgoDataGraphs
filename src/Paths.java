@@ -1,19 +1,35 @@
 public class Paths {
-    City[] path;
-    int sp;
+    private City[] path;
+    private int traverseIndex;
     public Paths() {
         path = new City[54];
-        sp = 0;
+        traverseIndex = 0;
     }
-    private Integer shortest(City from, City to) {
+    private Integer shortest(City fromCity, City toCity) {
         Integer shortestPath = null;
-        for (int i = 0; i < sp; i++) {
-            if (path[i] == from) {
-                return null;
+        Integer smallestDistanceCandidate;
+        while (!fromCity.equals(toCity)) {
+            smallestDistanceCandidate = 850;
+            for (Connection candidate: fromCity.connections) {
+                if (candidate.distanceInMinutes < smallestDistanceCandidate) {
+                    smallestDistanceCandidate = candidate.distanceInMinutes;
+                    if (testIfCityIsAlreadyInPathRoute(candidate.city)) {
+                        path[traverseIndex++] = candidate.city;
+                        shortestPath += candidate.distanceInMinutes;
+                    } else {
+                        return null;
+                    }
+                }
             }
         }
-        path[sp++] = from;
-        path[sp--] = null;
         return shortestPath;
+    }
+    private boolean testIfCityIsAlreadyInPathRoute(City testCity){
+        for (City routeCity : path) {
+            if (routeCity.equals(testCity)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
