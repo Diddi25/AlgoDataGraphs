@@ -1,9 +1,9 @@
-public class GoodMemoryAlgorithm {
+public class LittleImprovement {
     private City[] path;
     private int traverseIndex;
     private Integer dynamicMaxValue;
     private final Integer longestPathInMap;
-    public GoodMemoryAlgorithm(Map objectToAccessMaxDistance) {
+    public LittleImprovement(Map objectToAccessMaxDistance) {
         this.path = new City[54];
         this.traverseIndex = 0;
         this.longestPathInMap = objectToAccessMaxDistance.maxDistance;

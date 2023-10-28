@@ -1,22 +1,19 @@
 public class Paths {
     private City[] path;
     private int traverseIndex;
-    private Integer dynamicMaxValue;
-    public Paths() {
-        path = new City[54];
-        traverseIndex = 0;
-        dynamicMaxValue = null;
+    private final Integer longestPathInMap;
+    public Paths(Map objectToAccessMaxDistance) {
+        this.path = new City[54];
+        this.traverseIndex = 0;
+        this.longestPathInMap = objectToAccessMaxDistance.maxDistance;
     }
     private Integer shortest(City fromCity, City toCity) {
         Integer shortestPath = 0;
         Integer smallestDistanceCandidate;
         while (!fromCity.equals(toCity)) {
-            smallestDistanceCandidate = 850;
+            smallestDistanceCandidate = longestPathInMap;
             for (Connection candidate: fromCity.connections) {
-                if (candidate.city.equals(toCity)) {
-                    dynamicMaxValue = candidate.distanceInMinutes;
-                }
-                if (candidate.distanceInMinutes < smallestDistanceCandidate && shortestPath < dynamicMaxValue) {
+                if (candidate.distanceInMinutes < smallestDistanceCandidate) {
                     smallestDistanceCandidate = candidate.distanceInMinutes;
                     if (testIfCityIsAlreadyInPathRoute(candidate.city)) {
                         path[traverseIndex++] = candidate.city;
