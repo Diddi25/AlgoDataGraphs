@@ -15,7 +15,7 @@ public class Naive {
 
         System.out.println("shortest: " + distanceInMinutes + " min (" + time + " ms)");
     }
-    private static Integer shortest(City fromCity, City toCity, Integer max, Integer currentDistance) {
+    private static Integer shortest(City fromCity, City toCity, Integer max, Integer longestPathInMap) {
         if (max < 0) {
             return null;
         }
@@ -25,7 +25,7 @@ public class Naive {
         Integer shortestPath = null;
         Integer smallestDistanceCandidate;
         while (!fromCity.equals(toCity)){
-            smallestDistanceCandidate = currentDistance;
+            smallestDistanceCandidate = longestPathInMap;
             for (Connection candidate: fromCity.connections) {
                 if (candidate.distanceInMinutes < smallestDistanceCandidate) {
                     smallestDistanceCandidate = candidate.distanceInMinutes;
