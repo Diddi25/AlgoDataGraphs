@@ -2,7 +2,7 @@ public class GoodMemoryAlgorithm {
     private City[] path;
     private int traverseIndex;
     private Integer dynamicMaxValue;
-    private Integer longestPathInMap;
+    private final Integer longestPathInMap;
     public GoodMemoryAlgorithm(Map objectToAccessMaxDistance) {
         this.path = new City[54];
         this.traverseIndex = 0;
