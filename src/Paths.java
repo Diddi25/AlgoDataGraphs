@@ -8,7 +8,7 @@ public class Paths {
         this.longestPathInMap = objectToAccessMaxDistance.maxDistance;
     }
     private Integer shortest(City fromCity, City toCity) {
-        Integer shortestPath = 0;
+        Integer shortestPath = null;
         Integer smallestDistanceCandidate;
         while (!fromCity.equals(toCity)) {
             smallestDistanceCandidate = longestPathInMap;
